@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TestViewController.h"
+#import "DrawViewController.h"
 
 #import <FIR/FIR.h>
 
@@ -21,7 +21,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    TestViewController* viewcontroller = [[TestViewController alloc]init];
+    DrawViewController* viewcontroller = [[DrawViewController alloc]init];
     self.window.rootViewController = viewcontroller;
     [self.window makeKeyAndVisible];
     
