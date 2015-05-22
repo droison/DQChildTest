@@ -11,7 +11,7 @@
 #import "PIColorPickerController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface PIDrawerViewController () <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, PIColorPickerControllerDelegate>
+@interface PIDrawerViewController ()
 @property (weak, nonatomic) IBOutlet PIDrawerView *drawerView;
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *pickImageButton;
@@ -63,16 +63,11 @@
 #pragma mark - Button Action methods
 - (IBAction)pickImageButtonPressed:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Pick" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Pick From Library",nil];
-    [actionSheet showInView:self.view];
+
 }
 
 - (IBAction)pickColorButtonPressed:(id)sender
 {
-    PIColorPickerController *colorPicker = [[PIColorPickerController alloc] initWithNibName:@"PIColorPickerController" bundle:nil];
-    [colorPicker setDelegate:self];
-    [colorPicker setCurrentSelectedColor:self.selectedColor];
-    [self.navigationController pushViewController:colorPicker animated:YES];
 }
 
 - (IBAction)pickEraserButtonPressed:(id)sender
@@ -88,51 +83,5 @@
 - (IBAction)writeButtonPressed:(id)sender
 {
     [self.drawerView setDrawingMode:DrawingModePaint];
-}
-
-#pragma mark - UIActionSheetDelegate methods
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-    mediaUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    mediaUI.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-    mediaUI.allowsEditing = NO;
-    mediaUI.delegate = self;
-    [self presentViewController:mediaUI animated:YES completion:nil];
-}
-
-#pragma mark - UIImagePickerControllerDelegate methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = nil;
-    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
-    {
-        image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    }
-    else
-    {
-        NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-        if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo)
-        {
-            image = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
-        }
-    }
-    
-    self.backGroundImageView.image = image;
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - PIColorPickerControllerDelegate methods
-- (void)colorSelected:(UIColor *)selectedColor
-{
-    self.selectedColor = selectedColor;
-    [self.pickColorButton setBackgroundColor:selectedColor];    
-    [self.drawerView setSelectedColor:selectedColor];
 }
 @end

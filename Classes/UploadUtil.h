@@ -11,6 +11,11 @@
 
 @interface UploadUtil : NSObject
 
+@property(nonatomic, strong) NSString* name;
+@property(nonatomic, strong) NSString* phone;
+@property(nonatomic, assign) int age;
+@property(nonatomic, strong) NSArray* array;
+
 - (void) qiniuUpload:(UIImage*)image andName:(NSString*)name;
 - (void) post:(UIImage*)image andName:(NSString*)name;
 - (void) post:(UIImage*)image andName:(NSString*)name toIp:(NSString*)url;

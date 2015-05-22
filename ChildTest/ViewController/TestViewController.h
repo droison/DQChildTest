@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define SERVERKEY @"ServerKey"
+#define QINIUKEY @"QiniuKey"
+#define DRAWWIDTHKEY @"DrawWidthKey"  //粗细
+#define DRAWDPIKEY @"DrawDpiKey"  //分辨率
+
 @interface TestViewController : UIViewController
 
 @end

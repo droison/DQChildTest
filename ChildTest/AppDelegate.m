@@ -7,9 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "StartViewController.h"
 #import "DrawViewController.h"
+#import "PIDrawerViewController.h"
 
 #import <FIR/FIR.h>
+
+#define __MAKE_VERSION__(platform, major, minor, build) \
+((platform << 24) | (major << 16) | (minor << 8) | (build))
+
 
 @interface AppDelegate ()
 
@@ -21,13 +27,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    DrawViewController* viewcontroller = [[DrawViewController alloc]init];
+    UIViewController* viewcontroller = [[StartViewController alloc]init];
     self.window.rootViewController = viewcontroller;
     [self.window makeKeyAndVisible];
     
     //crash report
     [FIR handleCrashWithKey:@"1ea3cac84fdf07f02664a1d2681976e5"];
-    
+    [self tryUpdate];
     return YES;
 }
 
@@ -53,4 +59,50 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void) tryUpdate
+{
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://fir.im/api/v2/app/version/552d4a4dfc0b1a33700006ae"]] queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if (data) {
+            @try {
+                NSDictionary *result= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                
+                //对比版本
+                NSString * version=result[@"version"]; //对应 CFBundleVersion, 对应Xcode项目配置"General"中的 Build
+                UInt32 lastVersion = [self getVersion:version];
+                
+                NSString * localVersion=[[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+                UInt32 curVersion = [self getVersion:localVersion];
+                
+                NSString *url=result[@"installUrl"]; //如果有更新 需要用Safari打开的地址
+                
+                if (curVersion < lastVersion) {
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-services://?action=download-manifest&url=%@", url]]];
+                }
+                //这里放对比版本的逻辑  每个 app 对版本更新的理解都不同
+                //有的对比 version, 有的对比 build
+                
+            }
+            @catch (NSException *exception) {
+                //返回格式错误 忽略掉
+            }
+        }
+        
+    }];
+}
+
+- (UInt32) getVersion :(NSString*)strVersion
+{
+    NSArray *versionBitSet = [strVersion componentsSeparatedByString:@"."];
+    if (versionBitSet.count != 3) {
+        return 0;
+    }
+    
+    UInt32 major = [[versionBitSet objectAtIndex:0] unsignedIntValue];
+    UInt32 minor = [[versionBitSet objectAtIndex:1] unsignedIntValue];
+    UInt32 build = [[versionBitSet objectAtIndex:2] unsignedIntValue];
+    UInt32 uiVersion = __MAKE_VERSION__(1, major, minor, build);
+    
+    return uiVersion;
+}
 @end

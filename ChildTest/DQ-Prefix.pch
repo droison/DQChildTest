@@ -14,5 +14,9 @@
 #import "UiUtil.h"
 #import "DeviceInfo.h"
 #import "MMLog.h"
+#import "DQMainService.h"
+#import "Toast+UIView.h"
+
+#define TOAST(str) [MainService.mainWindow makeToast:str];
 
 #endif

@@ -14,10 +14,14 @@
 {
     [super viewDidLoad];
     UIImage* image = [UIImage imageNamed:@"background"];
-    UIImageView* imageview = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    UIImageView* imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MMScreenWidth, MMScreenHeight)];
     imageview.image = image;
     [self.view addSubview:imageview];
     [self.view sendSubviewToBack:imageview];
 }
 
+- (void) dealloc
+{
+    LogD(@"%@ dealloc", NSStringFromClass(self.class));
+}
 @end
