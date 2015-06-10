@@ -115,6 +115,7 @@ static DQMainService * instance;
     else
     {
         BOOL isAllRight = YES;
+        int curRight = 0;
         if (array.count == rightAnswer.count)
         {
             for (NSNumber *answerNum in array)
@@ -122,7 +123,7 @@ static DQMainService * instance;
                 BOOL isRight = NO;
                 for (NSNumber * rightNum in rightAnswer) {
                     if (answerNum.intValue == rightNum.intValue) {
-                        rightOption ++;
+                        curRight ++;
                         isRight = YES;
                         break;
                     }
@@ -139,11 +140,15 @@ static DQMainService * instance;
             {
                 for (NSNumber * rightNum in rightAnswer) {
                     if (answerNum.intValue == rightNum.intValue) {
-                        rightOption ++;
+                        curRight ++;
                         break;
                     }
                 }
             }
+        }
+        rightOption += curRight;
+        if (!isAllRight && curRight == rightAnswer.count) { //不正确，并且正确答案都有，不该为满分
+            rightOption = rightOption - 1;
         }
         totalOption += rightAnswer.count;
         [_answerArray addObject:[NSNumber numberWithBool:isAllRight]];
@@ -595,7 +600,7 @@ static DQMainService * instance;
         serverIp = @"192.168.1.100";
     }
     
-    int score = (rightOption * 100)/totalOption;
+    int score = floor((rightOption * 100)/totalOption);
     
     NSString* imageName = [NSString stringWithFormat:@"%@-%@-%d-%d-%@-%@-%@-%@-%@-%@-%@-%@.jpg", _phone, _name, _curAgeType, score, _answerArray[0], _answerArray[1], _answerArray[2], _answerArray[3], _answerArray[4], _answerArray[5], _answerArray[6], _answerArray[7]];
     
