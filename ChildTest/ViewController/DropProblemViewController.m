@@ -27,12 +27,12 @@
     
     _originPointArray = [NSMutableArray arrayWithCapacity:optionCount];
     
-    UIImage* titleImg = [UIImage imageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_title": @"p%d_title", problemId]];
+    UIImage* titleImg = [UIImage DQImageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_title": @"p%d_title", problemId]];
     UIImageView* titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - titleImg.size.width)/2, 240/2, titleImg.size.width, titleImg.size.height)];
     titleImageView.image = titleImg;
     [self.view addSubview:titleImageView];
     
-    UIImage* plateImage = [UIImage imageNamed:@"plate"];
+    UIImage* plateImage = [UIImage DQImageNamed:@"plate"];
     plateImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - plateImage.size.width)/2, titleImageView.bottom + 30, plateImage.size.width, plateImage.size.height)];
     plateImageView.image = plateImage;
     [self.view addSubview:plateImageView];
@@ -138,7 +138,7 @@
 
 - (UIImageView*) genDropOptionBtn:(int)i
 {
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d": @"p%d_option%d", problemId, i]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d": @"p%d_option%d", problemId, i]];
     UIImageView* imageBtn = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [imageBtn setImage:image];
     imageBtn.tag = ButtonTagBegin + i;

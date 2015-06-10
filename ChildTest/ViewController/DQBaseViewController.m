@@ -13,7 +13,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    UIImage* image = [UIImage imageNamed:@"background"];
+    UIImage* image = [UIImage DQImageNamed:@"background"];
     UIImageView* imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MMScreenWidth, MMScreenHeight)];
     imageview.image = image;
     [self.view addSubview:imageview];

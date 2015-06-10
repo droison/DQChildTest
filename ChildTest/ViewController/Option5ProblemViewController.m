@@ -14,7 +14,7 @@
     optionCount = 5;
     [super viewDidLoad];
     
-    UIImage* titleImg = [UIImage imageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_title": @"p%d_title", problemId]];
+    UIImage* titleImg = [UIImage DQImageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_title": @"p%d_title", problemId]];
     UIImageView* titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - titleImg.size.width)/2, 240/2, titleImg.size.width, titleImg.size.height)];
     titleImageView.image = titleImg;
     [self.view addSubview:titleImageView];

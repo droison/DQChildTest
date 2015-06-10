@@ -42,12 +42,12 @@
     _drawingImageViewArray = [NSMutableArray array];
     [super viewDidLoad];
     
-    UIImage* titleImage = [UIImage imageNamed:@"draw_title"];
+    UIImage* titleImage = [UIImage DQImageNamed:@"draw_title"];
     UIImageView *titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - titleImage.size.width)/2, 72/2, titleImage.size.width, titleImage.size.height)];
     titleImageView.image = titleImage;
     [self.view addSubview:titleImageView];
     
-    UIImage* bgImage = [UIImage imageNamed:@"draw_bg"];
+    UIImage* bgImage = [UIImage DQImageNamed:@"draw_bg"];
     _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(MMScreenWidth - bgImage.size.width - 295/2, 247/2, bgImage.size.width, bgImage.size.height)];
     _bgImageView.image = bgImage;
     _bgImageView.userInteractionEnabled = YES;
@@ -63,30 +63,30 @@
     [_drawView setBackgroundColor:[UIColor clearColor]];
     [_bgImageView addSubview:_drawView];
     
-    UIImage* fgImage = [UIImage imageNamed:@"draw_fg"];
+    UIImage* fgImage = [UIImage DQImageNamed:@"draw_fg"];
     UIImageView* fgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(60, 410, fgImage.size.width, fgImage.size.height)];
     fgImageView.image = fgImage;
     fgImageView.userInteractionEnabled = NO;
     [_bgImageView addSubview:fgImageView];
     
-    UIImage* resetImage = [UIImage imageNamed:@"draw_reset"];
+    UIImage* resetImage = [UIImage DQImageNamed:@"draw_reset"];
     _reset = [[UIButton alloc]initWithFrame:CGRectMake(MMScreenWidth - 350/2 - resetImage.size.width, 310/2, resetImage.size.width, resetImage.size.height)];
     [_reset setImage:resetImage forState:UIControlStateNormal];
     [_reset addTarget:self action:@selector(onClickResetBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_reset];
     
-    UIImage* commitImage = [UIImage imageNamed:@"draw_complete"];
+    UIImage* commitImage = [UIImage DQImageNamed:@"draw_complete"];
     _commit = [[UIButton alloc]initWithFrame:CGRectMake((MMScreenWidth - commitImage.size.width)/2, (MMScreenHeight - commitImage.size.height - 152/2), commitImage.size.width, commitImage.size.height)];
     [_commit setImage:commitImage forState:UIControlStateNormal];
     [_commit addTarget:self action:@selector(onClickCommitBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_commit];
     
-    UIImage* logoImage = [UIImage imageNamed:@"draw_logo"];
+    UIImage* logoImage = [UIImage DQImageNamed:@"draw_logo"];
     UIImageView *logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, (MMScreenHeight - logoImage.size.height - 110/2), logoImage.size.width, logoImage.size.height)];
     logoImageView.image = logoImage;
     [self.view addSubview:logoImageView];
     
-    UIImage* eraseImage = [UIImage imageNamed:@"draw_erase"];
+    UIImage* eraseImage = [UIImage DQImageNamed:@"draw_erase"];
     _erase = [[UIButton alloc]initWithFrame:CGRectMake(50, 258/2, eraseImage.size.width, eraseImage.size.height)];
     [_erase setImage:eraseImage forState:UIControlStateNormal];
     [_erase addTarget:self action:@selector(onClickEraseBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -112,7 +112,7 @@
 
 - (UIButton*) genColorBtn:(int)i
 {
-    UIImage* colorImage = [UIImage imageNamed:[NSString stringWithFormat:@"draw_color%d", i]];
+    UIImage* colorImage = [UIImage DQImageNamed:[NSString stringWithFormat:@"draw_color%d", i]];
     UIButton* colorBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, colorImage.size.width, colorImage.size.height)];
     [colorBtn setImage:colorImage forState:UIControlStateNormal];
     colorBtn.tag = 10200 + i;
@@ -122,7 +122,7 @@
 
 - (UIButton*) genImageBtn:(int)i
 {
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"draw_img%d", i]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:@"draw_img%d", i]];
     UIButton* imageBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [imageBtn setImage:image forState:UIControlStateNormal];
     imageBtn.tag = 10300 + i;
@@ -178,7 +178,7 @@
     isDrawing = NO;
     _drawView.drawingMode = DrawingModeNone;
     
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"draw%d", (int)(sender.tag - 10300)]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:@"draw%d", (int)(sender.tag - 10300)]];
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     imageView.image = image;
     imageView.center = CGPointMake(_drawView.width/2, _drawView.height/2);

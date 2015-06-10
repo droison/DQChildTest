@@ -33,12 +33,12 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    UIImage* bgImage = [UIImage imageNamed:@"start_bg"];
+    UIImage* bgImage = [UIImage DQImageNamed:@"start_bg"];
     UIImageView* bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 248/2, bgImage.size.width, bgImage.size.height)];
     bgImageView.image = bgImage;
     [self.view addSubview:bgImageView];
     
-    UIImage* commitImage = [UIImage imageNamed:@"start_commit"];
+    UIImage* commitImage = [UIImage DQImageNamed:@"start_commit"];
     _commitBtn = [[UIButton alloc]initWithFrame:CGRectMake((MMScreenWidth - commitImage.size.width)/2, 600, commitImage.size.width, commitImage.size.height)];
     [_commitBtn setImage:commitImage forState:UIControlStateNormal];
     [_commitBtn addTarget:self action:@selector(onCommitClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -67,7 +67,7 @@
 
 - (UIButton*) genAgeBtn:(int)i
 {
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"start_option%d", i]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:@"start_option%d", i]];
     UIButton* imageBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [imageBtn setImage:image forState:UIControlStateNormal];
     imageBtn.tag = ButtonTagBegin + i;

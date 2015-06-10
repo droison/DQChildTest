@@ -25,12 +25,12 @@
 {
     answerArray = [NSMutableArray array];
     [super viewDidLoad];
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"problem_title%d", (int)(MainService.curAgeType + 1)]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:@"problem_title%d", (int)(MainService.curAgeType + 1)]];
     _titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - image.size.width)/2, 40, image.size.width, image.size.height)];
     _titleImageView.image = image;
     [self.view addSubview:_titleImageView];
     
-    UIImage* nextImage = [UIImage imageNamed:@"problem_next"];
+    UIImage* nextImage = [UIImage DQImageNamed:@"problem_next"];
     _nextBtn = [[UIButton alloc]initWithFrame:CGRectMake(MMScreenWidth - nextImage.size.width - 25, 20, nextImage.size.width, nextImage.size.height)];
     [_nextBtn setImage:nextImage forState:UIControlStateNormal];
     [_nextBtn addTarget:self action:@selector(onClickNextBtnV2) forControlEvents:UIControlEventTouchUpInside];
@@ -45,8 +45,8 @@
 
 - (UIButton*) genOptionBtn:(int)i
 {
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d": @"p%d_option%d", problemId, i]];
-    UIImage* imageHL = [UIImage imageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d_hl": @"p%d_option%d_hl", problemId, i]];
+    UIImage* image = [UIImage DQImageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d": @"p%d_option%d", problemId, i]];
+    UIImage* imageHL = [UIImage DQImageNamed:[NSString stringWithFormat:problemId<10? @"p0%d_option%d_hl": @"p%d_option%d_hl", problemId, i]];
     UIButton* imageBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     [imageBtn setImage:image forState:UIControlStateNormal];
     [imageBtn setImage:imageHL forState:UIControlStateHighlighted];

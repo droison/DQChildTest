@@ -20,7 +20,7 @@
     optionCount = 2;
     [super viewDidLoad];
     
-    UIImage* titleImg = [UIImage imageNamed:@"p01_title"];
+    UIImage* titleImg = [UIImage DQImageNamed:@"p01_title"];
     UIImageView* titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake((MMScreenWidth - titleImg.size.width)/2, 230/2, titleImg.size.width, titleImg.size.height)];
     titleImageView.image = titleImg;
     [self.view addSubview:titleImageView];
