@@ -310,6 +310,7 @@
 		E4CC35B81AF7C5A300096164 /* start_option3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CC35B21AF7C5A300096164 /* start_option3@2x.png */; };
 		E4CC35B91AF7C5A300096164 /* start_option4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CC35B31AF7C5A300096164 /* start_option4@2x.png */; };
 		E4D375D81B0E08E100B2DEED /* draw_fg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D375D71B0E08E100B2DEED /* draw_fg@2x.png */; };
+		E4D78B1A1B27B59900E09034 /* UIImage+DQExtend.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D78B191B27B59900E09034 /* UIImage+DQExtend.mm */; };
 		E4E2DA9D1AFAE87D00592B69 /* problem_title2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E2DA9C1AFAE87D00592B69 /* problem_title2@2x.png */; };
 		E4E86BC41AB9C88A00277CA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E86BC31AB9C88A00277CA2 /* libz.dylib */; };
 		E4F1B28D1B00F0930039A426 /* p01_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F1B28C1B00F0930039A426 /* p01_title@2x.png */; };
@@ -733,6 +734,8 @@
 		E4CC35B21AF7C5A300096164 /* start_option3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_option3@2x.png"; sourceTree = "<group>"; };
 		E4CC35B31AF7C5A300096164 /* start_option4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start_option4@2x.png"; sourceTree = "<group>"; };
 		E4D375D71B0E08E100B2DEED /* draw_fg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "draw_fg@2x.png"; sourceTree = "<group>"; };
+		E4D78B181B27B59900E09034 /* UIImage+DQExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DQExtend.h"; sourceTree = "<group>"; };
+		E4D78B191B27B59900E09034 /* UIImage+DQExtend.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+DQExtend.mm"; sourceTree = "<group>"; };
 		E4E2DA9C1AFAE87D00592B69 /* problem_title2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "problem_title2@2x.png"; sourceTree = "<group>"; };
 		E4E86BC31AB9C88A00277CA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E4F1B28C1B00F0930039A426 /* p01_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p01_title@2x.png"; sourceTree = "<group>"; };
@@ -1511,6 +1514,8 @@
 				E4CC35A11AF7BBFC00096164 /* UiUtil.mm */,
 				E4CC35A21AF7BBFC00096164 /* UIViewExtend.h */,
 				E4CC35A31AF7BBFC00096164 /* UIViewExtend.m */,
+				E4D78B181B27B59900E09034 /* UIImage+DQExtend.h */,
+				E4D78B191B27B59900E09034 /* UIImage+DQExtend.mm */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2149,6 +2154,7 @@
 				E494A7151ABB0D53001FEFB8 /* rscode.c in Sources */,
 				E494A7111ABB0D53001FEFB8 /* mask.c in Sources */,
 				E4CC355A1AF7B49500096164 /* DQMainService.m in Sources */,
+				E4D78B1A1B27B59900E09034 /* UIImage+DQExtend.mm in Sources */,
 				E41560C21AF9A35E00786291 /* PJRSignatureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
